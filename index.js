@@ -1,7 +1,5 @@
 const express = require("express");
 const app = express();
-const port = 5000;
-
 var cors = require("cors");
 
 const mongoDB= require("./db");
@@ -33,7 +31,7 @@ if (process.env.NODE_ENV === 'production')
   }
 // ------------------production---------------
 
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+const PORT = process.env.PORT || 5000; 
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`);
 });

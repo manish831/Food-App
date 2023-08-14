@@ -11,7 +11,7 @@ export default function Login() {
   // synthetic event
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("/api/loginuser", {
+    const response = await fetch("api/loginuser", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
