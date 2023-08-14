@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
-const mongoURL =
-  "mongodb+srv://manish:manish8574@cluster0.vwwriit.mongodb.net/twiggyApp?retryWrites=true&w=majority";
+const dotenv = require("dotenv");
+
+dotenv.config();
+const MONGO_URL = process.env.MONGO_URL;
 
 const mongoDB = async () => {
   try {
-    await mongoose.connect(mongoURL, {
+    await mongoose.connect(MONGO_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
