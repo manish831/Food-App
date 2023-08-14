@@ -11,7 +11,7 @@ export default function Login() {
   // synthetic event
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/loginuser", {
+    const response = await fetch("/api/loginuser", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -26,13 +26,13 @@ export default function Login() {
     if (!json.success) {
       alert("enter valid credentials");
     }
-     if (json.success) {
+    if (json.success) {
       localStorage.setItem("authToken", json.authToken);
       localStorage.setItem("userEmail", credentials.email);
-      
+
       console.log(localStorage.getItem("authToken"));
-       navigate("/");
-     }
+      navigate("/");
+    }
   };
 
   const onChange = (e) => {

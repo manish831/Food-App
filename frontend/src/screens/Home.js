@@ -4,12 +4,12 @@ import Card from "../components/Card";
 import { Link } from "react-router-dom";
 
 export default function () {
-  const [search, setSearch] =useState('');
+  const [search, setSearch] = useState("");
   const [foodCat, setFoodCat] = useState([]);
   const [foodItem, setFoodItem] = useState([]);
 
   const loadData = async () => {
-    let response = await fetch("http://localhost:5000/api/foodData", {
+    let response = await fetch("/api/foodData", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -47,9 +47,11 @@ export default function () {
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
-                  value={search} onChange={(e) => {setSearch(e.target.value)}}
+                  value={search}
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
                 />
-                
               </div>
             </div>
             <div className="carousel-item active">
@@ -115,7 +117,11 @@ export default function () {
                   <hr />
                   {foodItem !== [] ? (
                     foodItem
-                      .filter((item) => item.CategoryName === data.CategoryName && item.name.toLowerCase().includes(search.toLowerCase()))
+                      .filter(
+                        (item) =>
+                          item.CategoryName === data.CategoryName &&
+                          item.name.toLowerCase().includes(search.toLowerCase())
+                      )
                       .map((filterItems) => {
                         return (
                           <div
@@ -123,7 +129,7 @@ export default function () {
                             className="col-12 col-md-6 col-lg-3"
                           >
                             <Card
-                              foodItems = {filterItems}
+                              foodItems={filterItems}
                               options={filterItems.options[0]}
                             ></Card>
                           </div>
